@@ -1,12 +1,11 @@
-def find_missing_number(arr):
-    n = len(arr) + 1
-    expected_sum = n * (n + 1) // 2  
-    actual_sum = sum(arr)
-    return expected_sum - actual_sum
-
-# Test Cases
-print(find_missing_number([1, 2, 4, 5]))  
-print(find_missing_number([2, 3, 4, 5]))  
-print(find_missing_number([1, 2, 3, 4]))  
-print(find_missing_number([1]))           
-print(find_missing_number(list(range(1, 1000000))))  
+def find_missing_numbers(arr):
+    if not arr:
+        raise ValueError("Array cannot be empty")
+    n = len(arr) + 2  
+    present_numbers = set(arr)
+    missing_numbers = [num for num in range(1, n + 1) if num not in present_numbers]
+    
+    return missing_numbers
+arr = [1, 2, 4, 6, 7, 10]
+missing_numbers = find_missing_numbers(arr)
+print("Missing numbers:", missing_numbers)
